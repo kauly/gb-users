@@ -1,16 +1,11 @@
-import { octokit } from "@/lib/github";
-import { Button } from "@nextui-org/button";
+import { SearchInput } from "@/components/search-input";
 
 export default async function Home() {
-  const data = await octokit.rest.users.getByUsername({
-    username: "dalgrande",
-  });
-
-  console.log(data);
-
   return (
-    <div className="flex h-screen w-full items-center justify-center">
-      <Button>Click me</Button>
-    </div>
+    <main className="flex h-screen w-full justify-center bg-gradient-to-tr from-slate-400 to-black px-4 pt-8 md:pt-12">
+      <div className="w-full max-w-lg">
+        <SearchInput placeholder="Search for an user name..." />
+      </div>
+    </main>
   );
 }
