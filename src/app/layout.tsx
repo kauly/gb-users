@@ -15,8 +15,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`antialiased`}>
+    <html
+      lang="en"
+      className="bg-gradient-to-l from-red-400 to-orange-500 antialiased dark"
+    >
+      <body className="mx-auto max-w-screen-2xl ">
         <Providers>{children}</Providers>
       </body>
     </html>
