@@ -17,9 +17,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="bg-gradient-to-l from-red-400 to-orange-500 antialiased dark"
+      className=" bg-gradient-to-r from-slate-500 to-stone-700 antialiased dark"
     >
-      <body className="mx-auto max-w-screen-2xl ">
+      <body className="mx-auto h-full max-w-screen-2xl overflow-y-auto">
         <Providers>{children}</Providers>
       </body>
     </html>

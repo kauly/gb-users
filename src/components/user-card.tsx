@@ -1,17 +1,26 @@
 "use client";
 
-import { useUserSearch } from "@/hooks/use-user-search";
 import { Image } from "@nextui-org/image";
-import { useSearchParams } from "next/navigation";
-import { UserText } from "./user-text";
 import { Link } from "@nextui-org/react";
+import { useRouter, useSearchParams } from "next/navigation";
 
-//número de seguidores, número de seguidos, imagem do avatar, e-mail e bio
+import { useUserSearch } from "@/hooks/use-user-search";
+import { UserText } from "@/components/user-text";
+import { useEffect } from "react";
 
 export function UserCard() {
+  const { replace } = useRouter();
   const searchParams = useSearchParams();
   const search = searchParams.get("q");
   const { data } = useUserSearch(search);
+
+  useEffect(() => {
+    if (data && data.login) {
+      replace(`/?q=${search}&login=${data.login}`);
+    }
+  }, [data, replace, search]);
+
+  if (!data) return null;
 
   return (
     <div className="flex w-full flex-col items-center gap-8 md:flex-row">
@@ -32,9 +41,9 @@ export function UserCard() {
           href={data?.html_url}
           className="text-lg"
         >
-          {data?.name}
+          {data?.name || data?.login}
         </Link>
-        <UserText text={data?.bio} className="text-lg" />
+        <UserText text={data?.bio} className="text-lg italic" />
         <UserText title="Email:" text={data?.email} className="text-lg" />
         <UserText
           title="Followers:"

@@ -1,5 +1,8 @@
-import { octokit } from "@/lib/github";
+"use client";
+
 import { useQuery } from "@tanstack/react-query";
+
+import { octokit } from "@/lib/github";
 
 async function getUserSearch(search?: string | null) {
   try {
