@@ -17,6 +17,7 @@
     "octokit": "^4.0.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.4.1",
     "react-virtuoso": "^4.12.3"
   },
   "devDependencies": {
