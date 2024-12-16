@@ -1,16 +1,21 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
 import { Link } from "@nextui-org/react";
-import { useEffect } from "react";
+import { use, useEffect } from "react";
 import toast from "react-hot-toast";
 
 import { useRepo } from "@/hooks/use-repo";
 
-export default function ReposPage() {
-  const searchParams = useSearchParams();
-  const owner = searchParams.get("owner");
-  const repo = searchParams.get("repo");
+export type SearchParams = { [key: string]: string | string[] | undefined };
+export type NextPageProps = {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<SearchParams>;
+};
+
+export default function ReposPage({ searchParams }: NextPageProps) {
+  const params = use(searchParams);
+  const owner = params?.owner as string;
+  const repo = params?.repo as string;
 
   const { data, isError } = useRepo({
     owner: owner || "",

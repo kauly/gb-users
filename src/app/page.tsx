@@ -1,6 +1,7 @@
 import { RepoList } from "@/components/repo-list";
 import { SearchInput } from "@/components/search-input";
 import { UserCard } from "@/components/user-card";
+import { Suspense } from "react";
 
 export default async function Home() {
   return (
@@ -8,8 +9,10 @@ export default async function Home() {
       <div className="mx-auto w-full max-w-xl">
         <SearchInput placeholder="Search for an user name..." />
       </div>
-      <UserCard />
-      <RepoList />
+      <Suspense>
+        <UserCard />
+        <RepoList />
+      </Suspense>
     </main>
   );
 }
