@@ -45,14 +45,12 @@ export function RepoList() {
           endReached={() => fetchNextPage()}
           itemContent={(i, data) => {
             return (
-              <Card
-                key={data?.id}
-                className="mb-4 w-fit cursor-pointer hover:bg-default-200"
-              >
+              <Card key={data?.id} className="mb-4 w-fit  hover:bg-default-200">
                 <CardBody>
                   <div className="flex items-center gap-4">
                     <Link
                       href={`/repos?owner=${data.owner.login}&repo=${data.name}`}
+                      className="hover:underline"
                     >
                       {data?.html_url}
                     </Link>
